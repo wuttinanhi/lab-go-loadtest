@@ -1,5 +1,3 @@
-version: '3.4'
-
 services:
   labgoloadtest:
     image: labgoloadtest
@@ -13,6 +11,9 @@ services:
     image: loadimpact/k6
     build: ./k6
     environment:
-      - COUNT=5000
+      - COUNT=1000
       - URL=http://labgoloadtest:3000/hit
       - DURATION=1s
+    # service container count
+    deploy:
+      replicas: 10
